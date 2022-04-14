@@ -1,7 +1,6 @@
 const request = require('request')
 
 const forecast = (latitude, longitude, callback) => {
-  console.log('LAT', latitude, 'LONG', longitude)
   const url = `http://api.weatherstack.com/current?access_key=d6dc7aafa861048bc3b58aa23b2bc454&query=${latitude},${longitude}&units=f`
 
   request({url, json: true}, (error,{ body }) => {
@@ -15,7 +14,8 @@ const forecast = (latitude, longitude, callback) => {
       const feelsLike = feelslike
       const description = weather_descriptions[0]
       callback(undefined,
-        `${description}. It is currently ${currentTemp} degrees out. It feels like ${feelsLike} degrees out. The wind direction is ${wind_dir} at a speed of ${wind_speed}.`
+        `${description}. It is currently ${currentTemp} degrees out. It feels like ${feelsLike} degrees out.
+        The wind direction is ${wind_dir} at a speed of ${wind_speed}.`
       )
     }
   })
